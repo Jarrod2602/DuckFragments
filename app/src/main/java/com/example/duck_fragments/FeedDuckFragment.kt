@@ -28,6 +28,7 @@ class FeedDuckFragment : Fragment() {
 
         val layout2 = inflater.inflate(R.layout.fragment_duck__stats, container, false)
         val lblDuckHunger: TextView = layout2.findViewById(R.id.lblDuckFeed)
+        val lblDuckPlay: TextView = layout2.findViewById(R.id.lblDuckPlay)
         var isLayout2Added = false
 
         imgFeedDuck.setOnClickListener{
@@ -35,6 +36,7 @@ class FeedDuckFragment : Fragment() {
             {
                 hungerCount += 20
                 lblDuckHunger.text = "Hunger: $hungerCount%"
+                lblDuckPlay.text = "Attention: $playCount%"
                 lblMessage.visibility = View.VISIBLE
                 imgSpeechBubble.visibility = View.VISIBLE
                 Handler().postDelayed({
@@ -45,6 +47,7 @@ class FeedDuckFragment : Fragment() {
             else
             {
                 lblDuckHunger.text = "Hunger: $hungerCount%"
+                lblDuckPlay.text = "Attention: $playCount%"
                 lblMessageFull.visibility = View.VISIBLE
                 //Code Attribution
                 //https://stackoverflow.com/questions/43348623/how-to-call-a-function-after-delay-in-kotlin

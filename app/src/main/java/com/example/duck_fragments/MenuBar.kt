@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 private val Frag1 = FeedDuckFragment()
+private val Frag2 = PlayDuckFragement()
 
 class MenuBar : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,6 +28,7 @@ class MenuBar : AppCompatActivity() {
             when(it.itemId)
             {
                 R.id.ic_feed->replaceFrag(Frag1)
+                R.id.ic_play->replaceFrag(Frag2)
             }
             true
         }

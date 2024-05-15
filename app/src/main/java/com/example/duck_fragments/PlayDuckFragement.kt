@@ -1,59 +1,66 @@
 package com.example.duck_fragments
 
+import android.media.Image
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [PlayDuckFragement.newInstance] factory method to
- * create an instance of this fragment.
- */
+import android.widget.Button
+import android.widget.EditText
+import android.widget.ImageView
+import android.widget.TextView
+import org.w3c.dom.Text
+var playCount: Int = 0
 class PlayDuckFragement : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_play_duck_fragement, container, false)
-    }
+    ): View?
+    {
+        val layout = inflater.inflate(R.layout.fragment_play_duck_fragement, container, false)
+        val imgPlayDuck: ImageView = layout.findViewById(R.id.imgPlayDuck)
+        val lblMessage: TextView = layout.findViewById(R.id.lblMessagePlay)
+        val lblMessageSatisfied: TextView = layout.findViewById(R.id.lblMessageSatisfied)
+        val imgSpeechBubble: ImageView = layout.findViewById(R.id.imgSpeechBubblePlay)
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment PlayDuckFragement.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            PlayDuckFragement().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+        val layout2 = inflater.inflate(R.layout.fragment_duck__stats, container, false)
+        val lblDuckPlay: TextView = layout2.findViewById(R.id.lblDuckPlay)
+        val lblDuckFeed: TextView = layout2.findViewById(R.id.lblDuckFeed)
+        var isLayout2Added = false
+
+        imgPlayDuck.setOnClickListener{
+            if(playCount < 100)
+            {
+                playCount += 20
+                lblDuckPlay.text = "Attention: $playCount%"
+                lblDuckFeed.text = "Hunger: $hungerCount%"
+                lblMessage.visibility = View.VISIBLE
+                imgSpeechBubble.visibility = View.VISIBLE
+                Handler().postDelayed({
+                    lblMessage.visibility = View.INVISIBLE
+                    imgSpeechBubble.visibility = View.INVISIBLE
+                }, 1000)
             }
+            else
+            {
+                lblDuckPlay.text = "Attention: $playCount%"
+                lblDuckFeed.text = "Hunger: $hungerCount%"
+                lblMessageSatisfied.visibility = View.VISIBLE
+                //Code Attribution
+                //https://stackoverflow.com/questions/43348623/how-to-call-a-function-after-delay-in-kotlin
+                Handler().postDelayed({
+                    lblMessageSatisfied.visibility = View.INVISIBLE
+                }, 1000)
+            }
+
+            if (!isLayout2Added) {
+                container?.addView(layout2)
+                isLayout2Added = true
+            }
+        }
+        return layout
     }
 }

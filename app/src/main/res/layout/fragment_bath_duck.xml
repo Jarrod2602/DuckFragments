@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bathroom_background"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".BathDuckFragment">
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentContainerView6"
+        android:name="com.example.duck_fragments.Duck_Stats"
+        android:layout_width="410dp"
+        android:layout_height="158dp" />
+
+    <ImageView
+        android:id="@+id/imgBathDuck"
+        android:layout_width="match_parent"
+        android:layout_height="437dp"
+        android:layout_gravity="center"
+        android:src="@drawable/duck_bath"
+        android:layout_marginTop="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imgSpeechBubbleBath"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/speach_bubble"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="@id/imgBathDuck"
+        app:layout_constraintTop_toTopOf="@id/imgBathDuck"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="300dp"/>
+
+    <TextView
+        android:id="@+id/lblMessageBath"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:visibility="invisible"
+        android:text="Soapy!"
+        app:layout_constraintStart_toStartOf="@id/imgFeedDuck"
+        app:layout_constraintTop_toTopOf="@id/imgFeedDuck"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="330dp" />
+
+    <TextView
+        android:id="@+id/lblMessageCleaned"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="#FF0000"
+        android:text="I'm clean, thank you!"
+        android:visibility="invisible"
+        app:layout_constraintStart_toStartOf="@id/imgBathDuck"
+        app:layout_constraintTop_toTopOf="@id/imgBathDuck"
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="600dp" />
+
+</FrameLayout>
